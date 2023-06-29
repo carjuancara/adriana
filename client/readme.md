@@ -56,7 +56,7 @@ ___
 
  Para el BACK-END utilizare *EXPRESS*
 
- ## Las rutas disponibles tendran *CRUD* sobre
+ ## Las rutas disponibles tendrán *CRUD* sobre
 
  * Sales 
  * Reason-change
@@ -159,13 +159,34 @@ ___
  | DELETE  | /articles/:id    | **Borra** un articulo                                               |
  | PUT     | /articles/:id    | **Actualiza** un articulo                                           |
  
+---
+
+## **RUTA /payment**
+ | HTML    |      RUTA        | DESCRIPCION                                                               |
+ |:--------|:-----------------|:--------------------------------------------------------------------------|
+ | POST    | /payment        | **Registra** un nuevo método de pago                                       |
+ | GET     | /payment/:id    | **Trae** un método de pago                                                 |
+ | GET     | /payment        | **Trae** todos los métodos de pagos                                        |
+ | DELETE  | /payment/:id    | **Borra** un método de pago                                                |
+ | PUT     | /payment/:id    | **Actualiza** un método de pagos                                           |
+
+---
+
+## **RUTA /creditnote**
+ | HTML    |      RUTA        | DESCRIPCION                                                               |
+ |:--------|:-----------------|:--------------------------------------------------------------------------|
+ | POST    | /creditnote        | **Registra** una nueva nota de credito                                  |
+ | GET     | /creditnote/:id    | **Trae** una nota de credito                                            |
+ | GET     | /creditnote        | **Trae** todos las nota de credito                                      |
+ | DELETE  | /creditnote/:id    | **Borra** una nota de credito                                           |
+ | PUT     | /creditnote/:id    | **Actualiza** una nota de credito                                       |
 
 ---
  ## Borrado lógico
-    Para esto las tablas poseen el atributo ACTIVE, en la cual se cambia a TRUE para que no este disponible ¡NO BORRA LOS REGISTROS!
+    Para esto las tablas poseen el atributo ACTIVE, en la cual se cambia a FALSE para que no este disponible ¡NO BORRA LOS REGISTROS!
 
  ## La tabla *Company*
- Esta solo **tendra un solo registro** en el cual tendra toda la info de la empresa, para poder ser utilizada donde sea necesaria, esta **solo podra ser actualizada** por el administrador
+ Esta solo **tendrá un solo registro** en el cual tendrá toda la info de la empresa, para poder ser utilizada donde sea necesaria, esta **solo podra ser actualizada** por el administrador
  
  ## La tabla *Roles*
  Esta solo contiene 3 registros con:
