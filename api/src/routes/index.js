@@ -10,7 +10,7 @@ const reasonChangeRouter = require('./ReasonChangeRouter')
 const taxRouter = require('./TaxConditionsRouter')
 const paymentRouter = require('./PaymentRouter')
 const rolesRouter = require('./RolesRouter')
-const companyRouter = require('./companyRouter')
+const companyRouter = require('./CompanyRouter')
 
 server.use('/sales', salesRouter)
 server.use('/articles', articlesRouter)
