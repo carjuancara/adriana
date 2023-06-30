@@ -2,7 +2,7 @@
 #
 # Adriana e-commerce
 
-![Tienda de ropa](./src/assets/adriana.jpg)
+![Tienda de ropa](./client/src/assets/adriana.jpg)
 
 ## Tienda de ropa & accesorios
 
@@ -47,7 +47,7 @@ Para este proyecto, se hara una SPA, desarrollando tanto la BD, BACK-END y FRONT
 * DB relacional: Postgres
 * ORM : Sequelize
 
-![Base de datos](./src/assets/D.E.R.%20Adriana.png)
+![Base de datos](./client/src/assets/D.E.R.%20Adriana.png)
 
 ___
 
