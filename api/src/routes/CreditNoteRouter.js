@@ -5,11 +5,12 @@ const {
   getCredit,
   deleteCredit,
   updateCredit,
+  enabledCredit
 } = require("../handlers/handlersCreditNote");
 
 CreditNoteRouter.post("/", postCredit);
-CreditNoteRouter.get("/:id", getCredit);
-CreditNoteRouter.delete("/:id", deleteCredit);
-CreditNoteRouter.put("/:id", updateCredit);
-
+CreditNoteRouter.get("/", getCredit);
+CreditNoteRouter.delete("/", deleteCredit);
+CreditNoteRouter.put("/update", updateCredit);
+CreditNoteRouter.put('/enabled',enabledCredit)
 module.exports = CreditNoteRouter;
