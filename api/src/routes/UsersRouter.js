@@ -3,12 +3,12 @@ const UsersRouter = express.Router();
 const {
   postUser,
   getUser,
-  deleteUser,
+  changeStateUser,
   updateUser,
 } = require("../handlers/handlersUsers");
 
 UsersRouter.post("/", postUser);
-UsersRouter.get("/:id", getUser);
-UsersRouter.delete("/:id", deleteUser);
-UsersRouter.put("/:id", updateUser);
+UsersRouter.get("/", getUser);
+UsersRouter.put("/update", updateUser);
+UsersRouter.put("/state", changeStateUser);
 module.exports = UsersRouter;
