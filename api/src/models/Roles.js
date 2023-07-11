@@ -13,7 +13,11 @@ module.exports = (sequelize) => {
       roles: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+        unique: true
+      },
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
     },
     {
