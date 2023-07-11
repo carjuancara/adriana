@@ -1,8 +1,7 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
   sequelize.define(
-    "Credit_detail",
+    "CreditDetails",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -32,7 +31,7 @@ module.exports = (sequelize) => {
       },
     },
     {
-      tableName: "Credit_detail", // Nombre de tabla personalizado
+      tableName: "CreditDetails", // Nombre de tabla personalizado
     }
   );
 };
