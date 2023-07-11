@@ -3,13 +3,13 @@ const ProviderRouter = express.Router();
 const {
   postProvider,
   getProvider,
-  deleteProvider,
+  changeStateProvider,
   updateProvider,
 } = require("../handlers/handlersProviders");
 
 ProviderRouter.post("/", postProvider);
-ProviderRouter.get("/:id", getProvider);
-ProviderRouter.delete("/:id", deleteProvider);
-ProviderRouter.put("/:id", updateProvider);
+ProviderRouter.get("/", getProvider);
+ProviderRouter.put("/state", changeStateProvider);
+ProviderRouter.put("/update", updateProvider);
 
 module.exports = ProviderRouter;
