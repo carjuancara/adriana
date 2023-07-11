@@ -1,50 +1,97 @@
-require('dotenv').config()
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize')
-const {DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER} = process.env
+require("dotenv").config();
+const { Sequelize } = require("sequelize");
+const fs = require("fs");
+const path = require("path");
+const { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
-  
+  }
+);
 
+const basename = path.basename(__filename);
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
-fs.readdirSync(path.join(__dirname, '/models'))
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+fs.readdirSync(path.join(__dirname, "/models"))
+  .filter(
+    (file) =>
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+  )
   .forEach((file) => {
-    modelDefiners.push(require(path.join(__dirname, '/models', file)));
+    modelDefiners.push(require(path.join(__dirname, "/models", file)));
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos
-modelDefiners.forEach(model => model(sequelize));
+modelDefiners.forEach((model) => model(sequelize));
+
 // Capitalizamos los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
-let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
+
+let capsEntries = entries.map((entry) => [
+  entry[0][0].toUpperCase() + entry[0].slice(1),
+  entry[1],
+]);
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { Articles, Brands, Company, Credit_note_details, Credit_notes, Payment_methods, Providers, Reason_changes, Roles, Sales, Sale_detail, Tax_conditions, Users} = sequelize.models;
+// En sequelize.models están todos los modelos importados como propiedades
+// Para relacionarlos hacemos un destructuring
+const {
+  Articles,
+  Brands,
+  CreditDetails,
+  CreditNotes,
+  Payments,
+  Providers,
+  ReasonChanges,
+  Roles,
+  Sales,
+  SaleDetails,
+  Tax,
+  Users,
+} = sequelize.models;
 
-Sales.belongsToMany(Sale_detail, { through: "Sale_SaleDetail" })
-Sale_detail.belongsToMany(Sales, { through: "Sale_saleDetail" })
-Payment_methods.hasMany(Sales)
-Articles.hasMany(Sale_detail)
-Brands.hasMany(Articles)
-Articles.hasMany(Credit_note_details)
-Providers.hasMany(Articles)
-Reason_changes.hasMany(Credit_note_details)
-Credit_notes.hasMany(Credit_note_details)
-Users.hasMany(Credit_notes)
-Roles.hasMany(Users)
-Tax_conditions.hasMany(Users)
-Users.hasMany(Sales)
+Sales.belongsToMany(SaleDetails, { through: "Sale_Details" });
+SaleDetails.belongsToMany(Sales, { through: "Sale_Details" });
 
+Payments.hasMany(Sales);
+Sales.belongsTo(Payments)
+
+Articles.hasMany(SaleDetails);
+SaleDetails.belongsTo(Articles)
+
+Brands.hasMany(Articles);
+Articles.belongsTo(Brands)
+
+Articles.hasMany(CreditDetails);
+CreditDetails.belongsTo(Articles)
+
+Providers.hasMany(Articles);
+Articles.belongsTo(Providers)
+
+ReasonChanges.hasMany(CreditDetails);
+CreditDetails.belongsTo(ReasonChanges)
+
+CreditNotes.hasMany(CreditDetails);
+CreditDetails.belongsTo(CreditNotes)
+
+Users.hasMany(CreditNotes);
+CreditNotes.belongsTo(Users)
+
+Roles.hasMany(Users);
+Users.belongsTo(Roles)
+
+Tax.hasMany(Users);
+Users.belongsTo(Tax)
+
+Users.hasMany(Sales);
+Sales.belongsTo(Users)
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };
