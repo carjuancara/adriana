@@ -12,5 +12,5 @@ CreditNoteRouter.post("/", postCredit);
 CreditNoteRouter.get("/", getCredit);
 CreditNoteRouter.delete("/", deleteCredit);
 CreditNoteRouter.put("/update", updateCredit);
-CreditNoteRouter.put('/enabled',enabledCredit)
+CreditNoteRouter.put('/state',enabledCredit)
 module.exports = CreditNoteRouter;
