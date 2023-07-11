@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
   sequelize.define(
     "Brands",
@@ -20,7 +19,7 @@ module.exports = (sequelize) => {
       },
     },
     {
-      tableName: "Brands", // Nombre de tabla personalizado
+      tableName: "Brands",
     }
   );
 };
