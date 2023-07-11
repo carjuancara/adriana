@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
   sequelize.define(
     "Articles",
@@ -21,9 +20,15 @@ module.exports = (sequelize) => {
           const value =
             this.getDataValue("description").slice(0, 1).toUpperCase() +
             this.getDataValue("description").slice(1).toLowerCase();
-
           return value;
         },
+      },
+      image: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+          isUrl:true,
+        }
       },
       size: {
         type: DataTypes.STRING,
@@ -71,7 +76,7 @@ module.exports = (sequelize) => {
       },
     },
     {
-      tableName: "Articles", // Nombre de tabla personalizado
+      tableName: "Articles",
     }
   );
 };
