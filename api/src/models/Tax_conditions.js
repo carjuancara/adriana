@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
   sequelize.define(
     "Tax",
@@ -13,7 +12,7 @@ module.exports = (sequelize) => {
       description: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique:true
+        unique: true,
       },
       active: {
         type: DataTypes.BOOLEAN,
@@ -21,7 +20,7 @@ module.exports = (sequelize) => {
       },
     },
     {
-      tableName: "Tax", // Nombre de tabla personalizado
+      tableName: "Taxs",
     }
   );
 };
