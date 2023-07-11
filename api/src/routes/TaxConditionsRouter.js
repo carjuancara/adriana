@@ -3,12 +3,12 @@ const TaxConditionsRouter = express.Router();
 const {
   postTax,
   getTax,
-  deleteTax,
+  changeStateTax,
   updateTax,
 } = require("../handlers/handlersTaxConditions");
 
 TaxConditionsRouter.post("/", postTax);
-TaxConditionsRouter.get("/:id", getTax);
-TaxConditionsRouter.delete("/:id", deleteTax);
-TaxConditionsRouter.put("/:id", updateTax);
+TaxConditionsRouter.get("/", getTax);
+TaxConditionsRouter.put("/update", updateTax);
+TaxConditionsRouter.put("/state", changeStateTax);
 module.exports = TaxConditionsRouter;
