@@ -1,5 +1,4 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = (sequelize) => {
   sequelize.define(
     "Sales",
@@ -13,30 +12,30 @@ module.exports = (sequelize) => {
       user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        },
+      },
       total: {
         type: DataTypes.REAL,
-        allowNull:false
-        },
+        allowNull: false,
+      },
       discount_total: {
         type: DataTypes.REAL,
-        allowNull:false
-        },
+        allowNull: false,
+      },
       payment_method_id: {
         type: DataTypes.INTEGER,
-        allowNull:false
-        },
+        allowNull: false,
+      },
       sales_date: {
-        type: DataTypes.STRING(10),
-        defaultValue: new Date().toLocaleDateString()
-        },
+        type: DataTypes.STRING,
+        defaultValue: new Date().toLocaleDateString(),
+      },
       active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
     },
     {
-      tableName: "Sales", // Nombre de tabla personalizado
+      tableName: "Sales",
     }
   );
 };
