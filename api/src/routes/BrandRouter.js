@@ -3,12 +3,12 @@ const BrandRouter = express.Router();
 const {
   postBrand,
   getBrand,
-  deleteBrand,
   updateBrand,
+  changeStateBrand,
 } = require("../handlers/handlersBrands");
 
 BrandRouter.post("/", postBrand);
-BrandRouter.get("/:id", getBrand);
-BrandRouter.delete("/:id", deleteBrand);
-BrandRouter.put("/:id", updateBrand);
+BrandRouter.get("/", getBrand);
+BrandRouter.put("/update", updateBrand);
+BrandRouter.put("/state", changeStateBrand);
 module.exports = BrandRouter;
