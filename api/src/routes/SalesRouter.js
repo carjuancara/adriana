@@ -8,8 +8,8 @@ const {
 } = require("../handlers/handlersSales");
 
 SalesRouter.post("/", postSale);
-SalesRouter.get("/:id", getSale);
-SalesRouter.delete("/:id", deleteSale);
-SalesRouter.put("/:id", updateSale);
+SalesRouter.get("/", getSale);
+SalesRouter.put("/update", updateSale);
+SalesRouter.put("/active", deleteSale);
 
 module.exports = SalesRouter;
