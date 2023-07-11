@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       lastname: {
         type: DataTypes.STRING,
@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      user_name: {
+      userName: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -56,21 +56,21 @@ module.exports = (sequelize) => {
       },
       rol_id: {
         type: DataTypes.INTEGER,
-        defaultValue: 3,
+        allowNull: true,
       },
-      tex_conditions_id: {
+      tax_conditions_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
       balance: {
         type: DataTypes.REAL,
-        defaultValue: 0,
+        allowNull: true,
       },
       cuit: {
         type: DataTypes.STRING(13),
         allowNull: true,
         validate: {
-          len: 13,
+          len: [13, 13],
           isFormattedCuit(value) {
             if (!/^\d{2}-\d{8}-\d{1}$/.test(value)) {
               throw new Error("El formato del CUIT es incorrecto");
@@ -78,9 +78,16 @@ module.exports = (sequelize) => {
           },
         },
       },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+        },
+      },
       active: {
         type: DataTypes.BOOLEAN,
-        defaultValue: true,
+        allowNull: true,
       },
     },
     {
