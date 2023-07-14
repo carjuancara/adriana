@@ -8,12 +8,12 @@ module.exports = (sequelize) => {
         primaryKey: true,
         unique: true,
         autoIncrement: true,
-      },
-      sales_id: {
+      }, 
+      SalesId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      article_id: {
+      ArticleId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -31,6 +31,7 @@ module.exports = (sequelize) => {
       },
       discount_item: {
         type: DataTypes.REAL,
+        defaultValue:0,
         allowNull: true,
       },
       active: {
