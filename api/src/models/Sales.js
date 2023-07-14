@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
         unique: true,
         autoIncrement: true,
       },
-      user_id: {
+      UserId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
         type: DataTypes.REAL,
         allowNull: false,
       },
-      payment_method_id: {
+      PaymentId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
       active: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
-      },
+      }
     },
     {
       tableName: "Sales",
