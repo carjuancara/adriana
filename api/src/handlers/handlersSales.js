@@ -21,7 +21,7 @@ const postSale = async (req, res) => {
       sales_date,
     });
 
-
+    
     //console.log('nuevaVenta.proto',newSale.__proto__)
     const newSaleDetail = await SaleDetails.bulkCreate(productDetail)
     await newSale.addSaleDetails(newSaleDetail);
