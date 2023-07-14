@@ -54,11 +54,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      rol_id: {
+      RolesId: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      tax_conditions_id: {
+      TaxId: {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
