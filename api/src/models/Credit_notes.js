@@ -9,10 +9,6 @@ module.exports = (sequelize) => {
         unique: true,
         autoIncrement: true,
       },
-      sale_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       date_original: {
         type: DataTypes.DATEONLY,
         allowNull: false,
@@ -21,11 +17,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: new Date().toLocaleDateString(),
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+      },     
       direction: {
         type: DataTypes.STRING,
         allowNull: false,
