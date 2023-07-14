@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-          isUrl:true,
+          isUrl: true,
         }
       },
       size: {
@@ -41,7 +41,6 @@ module.exports = (sequelize) => {
       stock: {
         type: DataTypes.INTEGER,
         defaultValue: 1,
-        allowNull: false,
         validate: {
           min: 1,
         },
@@ -62,9 +61,8 @@ module.exports = (sequelize) => {
         type: DataTypes.REAL,
         allowNull: true,
       },
-      brand_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
+      BrandId: {
+        type: DataTypes.INTEGER
       },
       provider_id: {
         type: DataTypes.INTEGER,
